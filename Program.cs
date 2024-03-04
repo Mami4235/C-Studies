@@ -905,6 +905,7 @@ namespace deneme1
             Console.WriteLine("TC No : "+ Tcno +" olan "+ isim +" "+soyisim+" şahsın bilgileri | Yaş : "+yas+" | Medeni Hal : "+(medeniHal ? "Evli" :"Bekar"));
             #endregion
             #endregion
+            //12346
         }
     }
 }
