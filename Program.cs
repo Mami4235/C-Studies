@@ -895,17 +895,229 @@ namespace deneme1
             #endregion
 
             #region String Formatlandırma
-            string isim = "Muhammet Ali", soyisim = "ALTOK", Tcno = "12345678910";
-            int yas = 26;
-            bool medeniHal = false;
+            ///// string isim = "Muhammet Ali", soyisim = "ALTOK", Tcno = "12345678910";
+            ///// int yas = 26;
+            ///// bool medeniHal = false;
 
-           //Console.WriteLine("TC No : ........... olan ...... ....... şahsın bilgileri | Yaş : .. | Medeni Hal : ...");
+            //////Console.WriteLine("TC No : ........... olan ...... ....... şahsın bilgileri | Yaş : .. | Medeni Hal : ...");
 
-            #region + Operatörü
-            Console.WriteLine("TC No : "+ Tcno +" olan "+ isim +" "+soyisim+" şahsın bilgileri | Yaş : "+yas+" | Medeni Hal : "+(medeniHal ? "Evli" :"Bekar"));
+            //// #region + Operatörü
+            //// Console.WriteLine("TC No : "+ Tcno +" olan "+ isim +" "+soyisim+" şahsın bilgileri | Yaş : "+yas+" | Medeni Hal : "+(medeniHal ? "Evli" :"Bekar"));
+            #endregion
+
+            #region string.Format
+            // string.Format fonksiyonu metinsel kalıbın içerisindeki indexsel belirlenen noktalara sırasıyla değer göndermemizi sağlayan fonksiyondur.
+            ////string sonuc = string.Format("TC No : {0} olan {1} {2} şahsın bilgileri | Yaş : {3} | Medeni Hal : {4}", Tcno, isim, soyisim, yas, medeniHal ? "Evli" : "Bekar");
+            ////Console.WriteLine(sonuc);
+            #endregion
+
+            #region String Değeri $(String Interpolation)
+            //Strin Interpolation string ifadenin içerisinde süslü parantez ile araya girerek programatik bir değişkenin değerini bırakmamızı/eklememizi sağlayan bir operatördür.
+            // Bir string ifadenin başına $ operatörü koyulursa bu ifadenin içerisinde string interpolation operasyonunun/operatörünün kullanılabilirliği sağlanır.
+            // Yani ilgili string içerisindeki {} süslü parrentezler bir interpolation özelliği sergilerler.
+
+            //// Console.WriteLine($"TC No : {Tcno} olan {isim} {soyisim} şahsın bilgileri | Yaş : {yas} | Medeni Hal : {(medeniHal ? "Evli" : "Bekar")} {{Ahmet}}");
+            #endregion
+
+            #region String Kaçış Karakterleri
+            //Strin içerisinde kaçış karaktei olarak \(Backward Slash) kullanılmaktadır. Strin içerisinde özel/operatif karekterleri ezen ve bunları metinsel hale getirmemizi sağlayan bir karekterdir.
+            ////Console.WriteLine("\"Bu gün hava çok güzel\"");
+            ////Console.WriteLine("Muhammet Ali\\ALTOK");
+            ////Console.WriteLine("\a");
+            ////Console.WriteLine("abc\b");
+            ////Console.WriteLine("İsim\tSoyisim\tAdres\t");
+            #endregion
+
+            #region @(Verbatim String) Operatörü
+            #region 1. Kullanım
+            // Bir değişken yahut metot vs. gibi yapılanma isimlerinin programatik bir keyworde karşılık gelmesi mümkün değildir. Derleyici hatası verilir.
+            // Eğer ki illa ben bir keyword ismi kullanacak diyorsan eğer @ kullanabilirsin.
+            ////int @void = 5;
+            ////int @class = 5;
+            ////int @namespace = 5;
+            // Normal şartlar altında veremeyeceğimiz isimleri "@" ile atayabiliriz.
+            #endregion
+
+            #region 2. Kullanım
+            // string metin = "hava çok \"güzel\"";
+            ////string metin = @"hava çok""güzel""";
+            ////Console.WriteLine(metin);
+            //Escape karekterlerinin kullanılması icap eden durumlarda @ operatörünü kullanarak eylemsel karekterleri kendileriyle ezebilecek özellik kazandırıyoruz.
+            #endregion
+
+            #region 3. Kullanım
+            ////string metin = @"ckskjf
+            /////    dhsfhdsagfadsf
+            /////   fdfbfdfhdah";
+            //C# da string ifade birleştirilmeden bu şekilde alt alta yazılamaz.
+            //yazabilmek için @ operatörü kullanabiliriz.
+            // yada metinsel birleştirme yapılabilir. enter'e bastıkça program kendisi + ekleeyecek ve birleştirecektir.
             #endregion
             #endregion
-            //12346
+
+            #region String Fonksiyonları
+            ////String metin = "Laylaylom galiba sana göre sevmeler....";
+            #region Contains
+            //bool sonuc = metin.Contains("sana"); // Bu metnin içerisinde bu kelime var mı diye sorduk.
+            //Console.WriteLine(sonuc);
+            #endregion
+
+            #region StartsWith
+            // Metinin neyle başladığını kontrol eden bir fonksiyondur.
+            ////Console.WriteLine(metin.StartsWith("Laylay")); // C# Büyük küçük harfe duyarlı ;))
+            #endregion
+
+            #region EndsWith
+            // Metin sonunun neyle bittiğini kontrol etmemizi sağlayan fonksiyondur.
+            #endregion
+
+            #region Equals
+            // Elimizdeki metinsel ifade ile herhangi bir ifadenin değersel olarak eşit olup olmadığını check eden ve geriye bool sonuç döndüren bir fonksiyon.
+            //// Console.WriteLine(metin.Equals("Laylaylom galiba sana göre sevmeler...."));
+            #endregion
+
+            #region Compare
+            // Metinsel değerleri kendi aralarında karşılaştırma yapabiliyoruz sonuç "int" geri döner.
+            //0  : Her iki değer birbirine eşittir.
+            //1  : Soldaki sağdakindan alfanumerik olarak büyük.
+            //-1 : Soldaki sağdakindan alfanumerik olarak küçük.
+
+            ////Console.WriteLine(string.Compare(metin, "Z"));
+            ////Console.WriteLine(string.Compare(metin, "a"));
+            ////Console.WriteLine(string.Compare(metin, metin));
+            #endregion
+
+            #region CompareTo
+            // Metinsel değerleri kendi aralarında karşılaştırma yapabiliyoruz sonuç "int" geri döner.
+            //0  : Her iki değer birbirine eşittir.
+            //1  : Soldaki sağdakindan alfanumerik olarak büyük.
+            //-1 : Soldaki sağdakindan alfanumerik olarak küçük.
+
+            ////Console.WriteLine(metin.CompareTo("Z"));
+            ////Console.WriteLine(metin.CompareTo("a"));
+            ////Console.WriteLine(metin.CompareTo(metin));
+            #endregion
+
+            #region IndexOf
+            // Verilen değerin string ifade içerisinde olup olmadığını geriye int döndüren bir fonksiyondur.
+            // Geriye int olarak indexNoyu döndürür.
+            //-1 değerini döndürür.
+            ////Console.WriteLine(metin.IndexOf("la"));
+            #endregion
+
+            #region Insert
+            // Elimizdeki metinsel ifadeye bir değer dahil etmemizi/eklememizi sağlayan bir fonksiyondur.
+            ////string sonuc = metin.Insert(17, "merhaba");
+            ////Console.WriteLine(sonuc);
+            //İlgili ekleme operasyonugerçekleştikten sonra eklenmiş hali string olarak döndürülecektir.
+            //Lakin metin orjinal verisi ayrı bir şakilde tutulacaktır.
+            #endregion
+
+            #region Remove
+            // Metinsel ifadede indexel olarak verilen değer aralığını silen bir fonksiyondur.
+            // Insertte olduğu gibi ilgili fonksiyon yapmış olduğu işlem neticesinde yeni değeri üretecek bizlere string olarak döndürecektir. Elimizdeki orjinal veri değişmeyecektir.
+            ////Console.WriteLine(metin.Remove(5)); // 5. indexten sonraki tüm değerleri sil.
+            ////Console.WriteLine(metin.Remove(5,10)); // 5. indexten başla 10 adet sil.
+            ////Console.WriteLine(metin);
+            #endregion
+
+            #region Replace
+            // Elimizdeki metinsel ifadede belirtilen değerleri yahut karakterleri, belirtilen diğer değerler yada karakterler ile değiştirmemizi sağlayan bir fonsiyondır.
+            // Sonuç olarak string değer üretecek ve geriye döndürecektir.
+            ////Console.WriteLine(metin.Replace('a', 'b'));
+            ////Console.WriteLine(metin.Replace("la","lo"));
+            #endregion
+
+            #region Split
+            // Elimizdeki metinsel ifadeyi verilen değeri ayraç olarak kullanıp, parçalayan ve sonucu string dizisi olarak döndüren bir fonksiyondur.
+            ////string[] dizi = metin.Split(' ');
+            ////string[] dizi = metin.Split(' ', 'a');
+            #endregion
+
+            #region Substring
+            // En çok kullanılan fonksiyondur.
+            // Metinsel bir ifadenin belirli bir aralığını elde etmemizi sağlar.
+            ////Console.WriteLine( metin.Substring(5)); // 5. indexten sonuna kadar tüm değerleri getir.
+            ////Console.WriteLine(metin.Substring(5, 10)); // 5. indexten başlayacak 10 karekter getirecektir.
+            #endregion
+
+            #region ToLower
+            // Elimizdeki metinsel ifadenin tüm karakterlerini küçük karakter olarak düzenler.
+            //// Console.WriteLine(metin.ToLower());
+            #endregion
+
+            #region ToUpper
+            // Elimizdeki metinsel ifadenin tüm karakterlerini Büyük karakter olarak düzenler.
+            ////Console.WriteLine(metin.ToUpper());
+            #endregion
+
+            #region Trim
+            // Metinsel ifalerin varsa sağındaki ve solundaki boşluk karakterlerini temizleyen bir fonksiyondur.
+            ////Console.WriteLine("      ahmet cümbül        ".Trim());
+            #endregion
+
+            #region TrimEnd
+            // Elimizdeki ifadenin sonundaki boşluğu siler. Baştaki kalır.
+            #endregion
+
+            #region TrimStart
+            // Elimizdeki ifadenin başındaki boşluğu siler. Sondaki kalır.
+            #endregion
+
+            #endregion
+
+            #region Adımızın Baştan 3. Soyadımızın Sondan 5. Karakterini Getirelim
+            //string adSoyad = "Muhammet Ali ALTOK";
+            #region 1. Çözüm
+            ////Console.WriteLine(adSoyad[2]);
+            ////Console.WriteLine(adSoyad[adSoyad.Length - 5]);
+            #endregion
+
+            #region 2. Çözüm
+            ////string aralık = adSoyad[2..^4];
+            ////Console.WriteLine(aralık[0]);
+            ////Console.WriteLine(aralık[aralık.Length - 1]);
+            #endregion
+            #endregion
+
+            #region Girilen Metnin İçerisinde Kaç Adet ''n'' Karekterinin Geçtiğini Hesaplayalım
+            ////Console.WriteLine("Lütfen bir metin giriniz.");
+            ////string metin = Console.ReadLine();
+
+            ////int adet = 0;
+            ////for (int i = 0; i < metin.Length; i++)
+            ////{
+            ////    if (metin[i] == 'n')
+            ////        adet++;
+            ////}
+            ////Console.WriteLine(adet);
+            #endregion
+
+            #region Girilen Metindeki Kelime Sayısını Hesaplayalım
+            ////Console.WriteLine("Lütfen bir metin giriniz.");
+            ////string metin = Console.ReadLine();
+            ////#region 1. Çözüm
+            ////////#region 1. Çözüm
+            ////////string[] kelimeler = metin.Split(' ');
+            ////////Console.WriteLine(kelimeler.Length);
+            ////#endregion
+
+            ////#region 2. Çözüm
+            ////int adet = 1;
+            ////while (true)
+            ////{
+            ////    int index = metin.IndexOf(' ');
+            ////    if (index == -1)
+            ////        break;
+
+            ////        adet++;
+
+            ////    metin = metin.Substring(index +1);
+            ////}
+            ////Console.WriteLine(adet);
+
+            #endregion
+            
         }
     }
 }
