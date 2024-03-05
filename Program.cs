@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Extensions.Primitives;
+using System;
 using System.Runtime.CompilerServices;
+using System.Text;
 
 namespace deneme1
 {
@@ -1117,7 +1119,66 @@ namespace deneme1
             ////Console.WriteLine(adet);
 
             #endregion
-            
+
+            #region ArraySegment Nedir?
+            // Bir dizinin bütününden ziyade belirli bir kısmına yahut ihtiyaç dahilinde ilgili diziyi kopyalamak yerine(ki oldukça maliyetli bir operasyondur) bağımsız bir referans ile
+            //erişimimizi ve böylece salt bir şekilde temsil etmemizi sağlayan bir yapıdır.
+
+            #endregion
+
+            //// int[] sayilar = { 10, 20, 30, 40, 50, 60, 70, 80, 90, 100 };
+            //int[] sayilar2 = sayilar[2..5];
+
+            #region ArraySegment İle Dizinin Belli Bir Alanını Referans Etmek
+            ////ArraySegment<int> segment1 = new ArraySegment<int>(sayilar); // Dizinin tüm elemanlarını temsil eder.
+
+            ////ArraySegment<int> segment2 = new ArraySegment<int>(sayilar,2,5);
+
+            ////segment1[0] *= 10;
+            ////segment2[0] *= 10;
+            #endregion
+
+            #region ArraySegment Slicing(Dilimleme)
+            // Bir dizi üzerinde birden fazla parçada çalışılacaksa eğer herbir parçayı ayrı bir ArraySegment olarak tanımlayabiliriz.
+            // Bu tanımlamaların dışında diziyi tek bir ArraySegment ile referans edip ilgili parçaları o segment üzerinden talep edebiliriz.
+            // Yani ilgili diziyi tek bir segment üzerinden daha rahat bir şekilde parçalayabiliriz. Bu durumda bize yazılımsal açıdan efektiflik kazandırmış olacaktır.
+
+            ////ArraySegment<int> segment = new ArraySegment<int>(sayilar);
+            ////ArraySegment<int> segment1 = segment.Slice(0, 3);
+            ////ArraySegment<int> segment2 = segment.Slice(4, 7);
+            ////ArraySegment<int> segment3 = segment.Slice(5, 10);
+
+            // Belirli değer aralıklarını elimizdeki ana diziyi referans eden bir arraysegment üzerinden dilimliyerek gerçekleştirebiliriz.
+            #endregion
+
+            ////string text = "Ölüme gidelim dedin de mazot mu yok dedik.";
+
+            #region StringSegment Nedir?
+            // StringSegment, ArraySegment'in string değerler nezdindeki bir muadilidir.
+            // Esasında metinsel değerlerdeki birçok analitik operasyonlardan bizleri kurtarmakta ve Substring vs. gibi fonksiyonlar yerine string değerde hedef kesit üzerinde işlem yapmamızı sağlayan bir türdür.
+            #endregion
+
+            #region StringSegment İle Dizinin Beli Bir Alanını Referans Etmek
+            // StringSegment türünü kullanabilmek için uygulamaya Microsoft.Extensions.Primitives paketinin yüklenmesi gerekiyor.
+
+            ////StringSegment segment = new StringSegment(text);
+            ////StringSegment segment1 = new StringSegment(text, 2, 5);
+            ////Console.WriteLine(segment1);
+            #endregion
+
+            #region StringBuilder Sınıfı
+            ////string isim = "Muhammet Ali";
+            ////string soyisim = "ALTOK";
+            ////Console.WriteLine(isim + soyisim);
+            //StringBuilder string birleştirme operasyonlarında + nazaran yüksek maliyeti absorbe edebilmek için arkaplanda
+            //StringSegment algoritmasını kullanan ve bu algoritma ile bizlere ilgili değerleri olabilecek en az maliyetle birleştirip döndüren bir sınıftır.
+
+            ////StringBuilder builder = new StringBuilder();
+            ////builder.Append(isim);
+            ////builder.Append(" ");
+            ////builder.Append(soyisim);
+            ////Console.WriteLine(builder.ToString());
+            #endregion
         }
     }
 }
