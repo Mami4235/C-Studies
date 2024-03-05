@@ -2,8 +2,9 @@
 using System;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.RegularExpressions;
 
-namespace deneme1
+namespace deneme1 
 {
     internal class Program
     {
@@ -1180,7 +1181,134 @@ namespace deneme1
             ////Console.WriteLine(builder.ToString());
             #endregion
 
-            //123
+            #region Span Türü // Bu türü Çok ileride kullanırsın çok irdeleme ;)
+            ////int[] sayilar = { 10, 20, 30, 40, 50, 60, 70, 80, 90, 100 };
+
+            ////Span<int> span = new Span<int>(sayilar);
+            ////Span<int> span2 = sayilar                              // Bu 3 ünde hangi alanları tarif ediceğini Spana veriyoruz.
+            ////Span<int> span3 = new Span<int>(sayilar, 3, 5);
+
+            ////Span<int> span4 = sayilar.AsSpan();                      // Burada ise hangi türde bir Span döneceğini bildiriyoruz.
+            ////Span<int> span5 = sayilar.AsSpan(3, 5);
+
+            ////string text = "Sen kalbimde batan güneş, ben yollarda çilekeş..."
+
+            ////ReadOnlySpan<char> readOnlySpan = text.AsSpan();
+            ////ReadOnlySpan<char> span6 = text;
+            #endregion
+
+            #region Regular Expression Operatörleri
+            #region ^ Operatörü
+            // Satır başının istenilen ifadeyle başlamasını sağlar.
+
+            ////string text = "9fkmldkfnkfjhfdgjkhfdjkffdjg";
+            ////Regex regex = new Regex("^9");
+            ////Match match = regex.Match(text);
+
+            ////Console.WriteLine(match.Success);
+            #endregion
+
+            #region \ Operatörü
+            //\  : Belirli karakter gruplarını içermesini istiyorsak kullanırız.
+
+            //\D : Metinsel değerlerin ilgili yerinde rakam olmayan tek bir karakterin bulunması gerektiği belirtilir.
+            //\d : Metinsel değerin ilgili yerinde 0 - 9 arasında tek bir sayı olacağı ifade edilir.
+
+            //\W : Metinsel değerin ilgili yerinde alfanümerik olmayan karakterlerin olması gerektiği belirtilir. Alfanümerik karakterler : a-z A-A 0-9
+            //\w : Metinsel değerin ilgili yerinde alfanümerik olan karakterin olacağı ifade edilir.
+
+            //\S : Metinsel değerin ilgili yerinde boşluk karakterleri(tab/space) dışında herhangi bir karakterin olamayacağı belirtilir.
+            //\s : Metinsel değerin ilgili yerinde sadece boşluk karakterinin olacağı ifade edilir.
+
+            //ÖRN:
+            //9 ile başlayan, ikinci karakteri herhangi bir sayı olan ve son karakteri de boşluk olmayan bir düzenli ifade oluşturalım.
+            //^9\d\S
+
+            ////string text = "92fkmldkfnkfjhfdgjkhfdjkffdjg";
+            ////Regex regex = new Regex("^9\\d\\S");     // yada Regex(@"^9\d\S"); 1. 2. 3. karakterlerde işler demek oluyor.
+            ////Match match = regex.Match(text);
+
+            ////Console.WriteLine(match.Success);
+            ////#endregion
+            #endregion
+
+            #region + Operatörü
+            // Belirtilen "gruptaki" karakterlerin bir yada daha fazlasının olmasını istiyorsak kullanılan operatördür.
+            //9 ile başlayan, arada herhangi bir sayısal değerleri olan ve son karakteri de boşluk olmayan bir düzenli ifade oluşturalım.
+            //^9\d+\S
+
+            ////string text = "987554265d";
+            ////Regex regex = new Regex(@"^9\d+\S");
+            ////Match match = regex.Match(text);
+
+            ////Console.WriteLine(match.Success);
+            #endregion
+
+            #region | Operatörü
+            // Birden fazla karakte grubundan bir ya da birkaçının ilgili yerde olabileceğini belirtmek istiyorsak mantıksal veya operatörü kullanılır.
+
+            // Baş harfi a yada b yada c olan metinsel ifadeyi girelim.
+            //a|b|c
+
+            ////string text = "ahmet";
+            ////Regex regex = new Regex(@"a|b|c");
+            ////Match match = regex.Match(text);
+
+            ////Console.WriteLine(match.Success);
+            #endregion
+
+            #region {n} Operatörü
+            // Sabit sayıda karakterin olması isteniyorsa {adet} şeklinde belirtilmelidir.
+
+            //507-7514592
+            //\d\d\d-\d\d\d\d\d\d
+            //\d{3}-\d{6}
+
+            ////string text = "507-7514592";
+            ////Regex regex = new Regex(@"\d{3}-\d{6}");
+            ////Match match = regex.Match(text);
+
+            ////Console.WriteLine(match.Success);
+            #endregion
+
+            #region ? Operatörü
+            // Bu karakterin önüne gelen karakter en fazla bir en az sıfır defa olabilmektedir.
+
+            //\d{3}B?A --> 234BA, 543BA, 543A, 123BBA
+
+            ////string text = "123BBA";
+            ////Regex regex = new Regex(@"\d{3}B?A");
+            ////Match match = regex.Match(text);
+
+            ////Console.WriteLine(match.Success);
+            #endregion
+
+            #region . Operatörü
+            //\n : Kullanıldığı yerde \n karakteri dışında herhangi bir karakter bulunabilir.
+            //\d{3}.A
+
+            ////string text = "123'A";
+            ////Regex regex = new Regex(@"\d{3}.A");
+            ////Match match = regex.Match(text);
+
+            ////Console.WriteLine(match.Success);
+            #endregion
+
+            #region \b \B Operatörleri
+            //\B : Bu ifade ile kelimenin başında yada sonunda olmaması gereken  karekterler bildirilir.
+            //\b : bu ifade ilgili kelimenin belirtilen karakter dizisi ile sonlanmasını sağlar.
+
+            // \d{3}dır\B => 123dır, dır123, 123dır2
+
+            ////string text = "123dır";
+            ////Regex regex = new Regex(@"\d{3}dır\B");
+            ////Match match = regex.Match(text);
+
+            ////Console.WriteLine(match.Success);
+            #endregion
+
+
+            #endregion
         }
     }
 }
