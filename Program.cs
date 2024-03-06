@@ -1258,6 +1258,82 @@ namespace deneme1
             ////Console.WriteLine(match.Success);
             #endregion
 
+            #region Span Türü // Bu türü Çok ileride kullanırsın çok irdeleme ;)
+            ////int[] sayilar = { 10, 20, 30, 40, 50, 60, 70, 80, 90, 100 };
+
+            ////Span<int> span = new Span<int>(sayilar);
+            ////Span<int> span2 = sayilar                              // Bu 3 ünde hangi alanları tarif ediceğini Spana veriyoruz.
+            ////Span<int> span3 = new Span<int>(sayilar, 3, 5);
+
+            ////Span<int> span4 = sayilar.AsSpan();                      // Burada ise hangi türde bir Span döneceğini bildiriyoruz.
+            ////Span<int> span5 = sayilar.AsSpan(3, 5);
+
+            ////string text = "Sen kalbimde batan güneş, ben yollarda çilekeş..."
+
+            ////ReadOnlySpan<char> readOnlySpan = text.AsSpan();
+            ////ReadOnlySpan<char> span6 = text;
+            #endregion
+
+            #region Regular Expression Operatörleri
+            #region ^ Operatörü
+            // Satır başının istenilen ifadeyle başlamasını sağlar.
+
+            ////string text = "9fkmldkfnkfjhfdgjkhfdjkffdjg";
+            ////Regex regex = new Regex("^9");
+            ////Match match = regex.Match(text);
+
+            ////Console.WriteLine(match.Success);
+            #endregion
+
+            #region \ Operatörü
+            //\  : Belirli karakter gruplarını içermesini istiyorsak kullanırız.
+
+            //\D : Metinsel değerlerin ilgili yerinde rakam olmayan tek bir karakterin bulunması gerektiği belirtilir.
+            //\d : Metinsel değerin ilgili yerinde 0 - 9 arasında tek bir sayı olacağı ifade edilir.
+
+            //\W : Metinsel değerin ilgili yerinde alfanümerik olmayan karakterlerin olması gerektiği belirtilir. Alfanümerik karakterler : a-z A-A 0-9
+            //\w : Metinsel değerin ilgili yerinde alfanümerik olan karakterin olacağı ifade edilir.
+
+            //\S : Metinsel değerin ilgili yerinde boşluk karakterleri(tab/space) dışında herhangi bir karakterin olamayacağı belirtilir.
+            //\s : Metinsel değerin ilgili yerinde sadece boşluk karakterinin olacağı ifade edilir.
+
+            //ÖRN:
+            //9 ile başlayan, ikinci karakteri herhangi bir sayı olan ve son karakteri de boşluk olmayan bir düzenli ifade oluşturalım.
+            //^9\d\S
+
+            ////string text = "92fkmldkfnkfjhfdgjkhfdjkffdjg";
+            ////Regex regex = new Regex("^9\\d\\S");     // yada Regex(@"^9\d\S"); 1. 2. 3. karakterlerde işler demek oluyor.
+            ////Match match = regex.Match(text);
+
+            ////Console.WriteLine(match.Success);
+            ////#endregion
+            #endregion
+
+            #region + Operatörü
+            // Belirtilen "gruptaki" karakterlerin bir yada daha fazlasının olmasını istiyorsak kullanılan operatördür.
+            //9 ile başlayan, arada herhangi bir sayısal değerleri olan ve son karakteri de boşluk olmayan bir düzenli ifade oluşturalım.
+            //^9\d+\S
+
+            ////string text = "987554265d";
+            ////Regex regex = new Regex(@"^9\d+\S");
+            ////Match match = regex.Match(text);
+
+            ////Console.WriteLine(match.Success);
+            #endregion
+
+            #region | Operatörü
+            // Birden fazla karakte grubundan bir ya da birkaçının ilgili yerde olabileceğini belirtmek istiyorsak mantıksal veya operatörü kullanılır.
+
+            // Baş harfi a yada b yada c olan metinsel ifadeyi girelim.
+            //a|b|c
+
+            ////string text = "ahmet";
+            ////Regex regex = new Regex(@"a|b|c");
+            ////Match match = regex.Match(text);
+
+            ////Console.WriteLine(match.Success);
+            #endregion
+
             #region {n} Operatörü
             // Sabit sayıda karakterin olması isteniyorsa {adet} şeklinde belirtilmelidir.
 
@@ -1345,215 +1421,7 @@ namespace deneme1
 
             ////int[] yaslar = new int[17];
 
-            ////ArrayList _yaslar = new ArrayList();
-            #endregion
-
-            #region Tanımlanmış kolaksiyona Değer Atama
-            ////for (int i = 0; i < 17; i++)
-            ////{
-            ////    yaslar[i] = i + 10;
-
-            ////    _yaslar.Add(i + 10);
-            ////}
-            #endregion
-
-            #region Tanımlanmış Kolakesiyondan Değer Okuma
-            // Diziler
-            //// Console.WriteLine(yaslar[5]);
-
-            //Kolaksiyon
-            //// Console.WriteLine(_yaslar[5]);
-
-            #endregion
-
-            #region ArrayList Kullanırken Boxing - UnBoxing Durumları
-            // ArrayList, verilen datayı boxing işlemine tabi tutar.
-            // ArrayList içerisindeki herhangi bir veriyi talep ettiğimizde o veri object olarak gelecektir. Dolayısıyla kendi türünde işlem yapabilmek için unboxing işlemine tabi tutmamız gerekir.
-
-            ////int toplam = 0;
-            ////for (int i = 0; i < _yaslar.Count; i++)
-            ////{
-            ////    if (_yaslar[i] is int)
-            ////    { 
-            ////        toplam += (int)_yaslar[i];
-            ////    }
-            ////}
-            #endregion
-
-            #region ArrayList Kolaksiyonu Sınırlılıkları ve Diğer Kolaksiyon Yapılarının Çıkış Nedenleri
-
-            #endregion
-
-            #region ArrayList Collection Initializers(Koleksiyon İlklendirici) İle Değer Ekleme
-            ////ArrayList arrayList = new ArrayList()
-            ////{
-            ////    "Ahmet",
-            ////    123,
-            ////    'a',
-            ////    true,
-            ////};
-
-            #endregion
-
-            #region Örnek
-
-            #endregion
-
-            #endregion
-
-            #region İterasyon vs Döngü
-
-            //Foreach(İterasyon) BİR DÖNGÜ DEĞİLDİR!!!!
-
-            ////int[]sayilar = { 3, 213, 423, 42, 34, 234, 235 };
-
-            ////for (int i = 0; i < sayilar.Length; i++)
-            ////{
-
-            ////}
-            #endregion
-
-            #region Foreach İterasyonu
-            ////ArrayList sayilar = new ArrayList { 123, 123, 325, 2, 534, 5, 345, 345 };
-
-            ////foreach (object item in sayilar)
-            ////{
-            ////    sayilar.Add(15518981319158); // Veri kümesindeki eleman sayısını değiştirmemeliyiz eğer değişecekse 'Döngüler' kullanılmalı.
-            ////    Console.WriteLine(item);
-            ////}
-            #endregion
-
-            #region Math Sınıfı
-            #region Abs
-            // Mutlak değer işlemi yapan fonksiyondur.
-            // Absolute Value
-            ////int i = Math.Abs(5);
-            #endregion
-
-            #region Ceiling
-            ////Console.WriteLine(Math.Ceiling(3.14)); // Tam sayıya yuvarlar lakin Yukarıya yuvarlar..
-            #endregion
-
-            #region Floor
-            ////Console.WriteLine(Math.Floor(3.14));    // Ceiling'in tam tersine aşşağıya döndürür bu foksiyonda 
-            #endregion
-
-            #region Round
-            // Ondalıklı sayıyı En yakın tam sayıya yuvarlar.
-            ////Console.WriteLine(Math.Round(3.4));
-            ////Console.WriteLine(Math.Round(3.5));
-            ////Console.WriteLine(Math.Round(3.6));
-            #endregion
-
-            #region Pow
-            // Üstel kuvvet alan bir fonksiyondur.
-            ////Console.WriteLine(Math.Pow(7, 9));
-            #endregion
-
-            #region Sqrt
-            // Karekök alma fonksiyonu.
-            ////Console.WriteLine(Math.Sqrt(4));
-            #endregion
-
-            #region Truncate
-            // Ondalıklı sayının kendi tam sayı değerini döndürür.
-
-            #endregion
-
-            #endregion
-
-            #region DateTime Struct'ı
-
-            #region Now
-            // O anki tarihi saniyesine kadar getirir.
-            ////Console.WriteLine(DateTime.Now);
-            #endregion
-
-            #region Today
-            // Sadece tetiklendiği andaki Tarih bilgisini getirir.
-            #endregion
-
-            #region Compare
-            ////DateTime tarih1 = new DateTime(2021, 01, 01);
-            ////DateTime tarih2 = new DateTime(2022, 01, 01);
-            ////int result = DateTime.Compare(tarih1, tarih2);
-            ////if (result < 0)
-            ////{
-            ////    Console.WriteLine($"{tarih1} küçüktür {tarih2}");
-            ////}
-            ////else if (result == 0)
-            ////{
-            ////    Console.WriteLine($"{tarih1} eşittir {tarih2}");
-            ////}
-            ////else
-            ////{
-            ////    Console.WriteLine($"{tarih1} büyüktür {tarih2}");
-            ////}
-            #endregion
-
-            #region AddDays
-            // Bulunduğumuz zamana ekleme yapmak için bu ve aşağıdaki fonksiyonlar kullanılır.
-            //// Console.WriteLine(DateTime.Now.AddSeconds(999));
-            #endregion
-
-            #region AddHours
-
-            #endregion
-
-            #region AddMonths
-
-            #endregion
-
-            #region AddYears
-
-            #endregion
-
-            #region AddMiliseconds
-
-            #endregion
-
-            #endregion
-
-            #region TimeSpan Struct'ı
-            // İki tarih arasındaki farkı alan fonksiyondur.
-            ////DateTime t1 = DateTime.Now;
-            ////DateTime t2 = new DateTime(2000, 1, 1);
-
-            ////TimeSpan span = t1 - t2;
-            ////Console.WriteLine(span.Days);
-            ////Console.WriteLine(span.Minutes);
-            #endregion
-
-            #region Randon Sınıfı
-            ////Random random = new Random();
-
-            #region Next Fonksiyonu
-            ////Console.WriteLine(random.Next()); // 0 - ... dan büyük bir sayı üreticektir.
-            ////Console.WriteLine(random.Next(100)); // 0 - 100
-            ////Console.WriteLine(random.Next(50, 100)); // 50 - 100
-            #endregion
-
-            #region NextDouble Foksiyonu
-            ////while (true)    // Whileye gerek yok ama her döndüğünde farklı bir sayı oluştuğunu görmen için yaptım.
-            ////{
-            ////    Console.WriteLine(random.NextDouble());
-            ////}
-            #endregion
-
-            #endregion
-
-            #region Metotlar
-            // Metot, prosedürel programlamanın temel elemanıdır. Bir iş/fiiliyat/operasyon yapan ennn küçük program parçacıklarıdır.
-            // Metotlar içerisine yazılan kodun, tekrarlı bir şekilde kullanılmasını sağlarlar. Ve bunu yaparken kaynak kodun tekrar etmesini de engellemiş olurlar. Böylece ideal kodlamaya erişmiş oluruz.
-            
-            // [erişim belirleyicisi][geri donus degeri][metudun adı]()   <yazım şekli>
-           //{
-
-            //}
-            //public : Erişilsin.
-            //private : Gizli/Erişilmesin...
-
-            #endregion
+            //123
         }
     }
 }
