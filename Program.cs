@@ -1198,7 +1198,7 @@ namespace deneme1
             ////ReadOnlySpan<char> span6 = text;
             #endregion
 
-            #region Regular Expression Operatörleri
+             #region Regular Expression Operatörleri
             #region ^ Operatörü
             // Satır başının istenilen ifadeyle başlamasını sağlar.
 
@@ -1554,6 +1554,62 @@ namespace deneme1
             //private : Gizli/Erişilmesin...
 
             #endregion
-        }
+
+          
+
+        }// Metotlar Class'ın içerisinde oluşturulur.
+
+        // [erişim belirleyicisi][geri donus degeri][metudun adı](.............)
+        //{
+
+        //}
+
+        #region Geriye Değer Döndürmeyen, Parametre Almayan Metot
+
+        // Bir metot geriye değer döndürmüyorsa bunun void ile bildirilmesi ZORUNLUDUR!!!
+
+        ////private void Metot1()
+        ////{
+        ////    Console.WriteLine("Geriye Değer Döndürmeyen, Parametre Almayan Metot oluşturuldu.");
+        ////}
+        #endregion
+
+        #region Geriye Değer Döndürmeyen, Parametre Alan Metot
+        ////public void Metot2(int a)
+        ////{
+
+        ////}
+
+        ////public void Metot3(int a,bool b , char c)
+        ////{
+
+        ////}
+        #endregion
+
+        #region Geriye Değer Döndüren, Parametre Almayan Metot
+        // Eğer ki bir metor geriye herhangi bir türde değer döndüreceğini ifade ediyorsa kesinlikle o türde bir değer DÖNDÜRMELİDİR!!! aksi taktirde HATA VERİR.
+
+        // Geriye değer döndüren fonksiyonlarda, bildirilen türde bir değer döndürebilmek için return keywordünü kullanmamız gerekmektedir.
+        ////private char Metot5()
+        ////{
+
+        ////} return 'a'; // return; nerede işlenirse orada ilgili fonksiyondan/metottan çıkılır.
+        #endregion
+
+        #region Geriye Değer Döndüren, Parametre Alan Metot
+        ////public bool Metot7(int x)
+        ////{
+        ////    return true || false;
+        ////}
+
+        ////public int Metot 8(int x) 
+        ////{
+        ////    return DateTime.Now.Year > 2000 ? 1 :0;
+        ////}
+        #endregion
+        // Metodun geriye değer döndürmesi ne demektir?
+        // Ekrana çıktı vermek demek değildir. Bu değeri programatik olarak yakalayıp faklı işlemler tabii tutabilmemi sağlayan bir özelliktir... Ders 396-389
+
+        
     }
 }
