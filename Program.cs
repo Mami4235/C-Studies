@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -1555,6 +1556,10 @@ namespace deneme1
 
             #endregion
 
+            #region  Optional Parameters(İsteğe Bağlı parametreler) Aşşağıdaki metodun 
+            // Birden fazla parametre durumunda opsiyonel olanlar sağ tarafta TANIMLANMALIDIR.!!!!
+            ////X(15,20);
+            #endregion
           
 
         }// Metotlar Class'ın içerisinde oluşturulur.
@@ -1610,6 +1615,118 @@ namespace deneme1
         // Metodun geriye değer döndürmesi ne demektir?
         // Ekrana çıktı vermek demek değildir. Bu değeri programatik olarak yakalayıp faklı işlemler tabii tutabilmemi sağlayan bir özelliktir... Ders 396-389
 
+        //-------------------------------------------------0------------------------------------------------
+
+        //Parametreli bir metot kullanırken/ çağrılırken/ tetiklenirken parametrelerine türlerine uygun değerler gönderilmek ZORUNLUDUR!!!  
+
+        //Eğer ki, metodun parametrelerine zorunlu bir şekilde değer göndermek istemiyorsa, parametreye değeri isteğimize göre/ opsiyonel olarak göndermek istiyorsak o parametrenin-
+        // bu durumu karşılayabilecek bir özellikte olması gerekmektedir. İşte bu özelliğe opsiyonel parametre denmektedir.
+
+        // Bir parametrenin opsiyonel olması demek o paramaetrenin varsayılan/default değeri olması demektir.
+
+        //// static public void X(int a, int b =0) // Optional Parameters(İsteğe Bağlı parametreler)
+
+        //Metot parametrelerine =(assign) "(int b = 0)" operatörü ile bir değer atanırsa o parametreye varsayılan değeri atanmış olur. Haliyle opsiyonel parametre haline getirilmiş olunur.
+        //// {
+
+        //// }
         
+
+        ////static void Main(string[] args) // Tanımlanmış Metodun kullanımı (391)
+        ////{
+        ////    #region Tanımlanmış Metodun Kullanımı
+        ////    //Tetikleme = Çağırma = Kullanım
+        ////    #region Tanımlandığı Sınıf İçerisinde Kullanımı
+        ////    // Bir metot tanımlandığı sınıf içerisindeki farklı bir metot içerisinden çağırılacaksa eğer tek yapılması gereken sadece isminin çağırılmasıdır/tetiklenmesidir/çalıştırılmasıdır.
+        ////    X();
+
+        ////    #endregion
+        ////    #region Başka Sınıflarda Kullanımı
+
+        ////    #endregion 
+        ////    #endregion
+        ////}
+        ////static void X()
+        ////{
+
+        ////}
+
     }
+
+    ////class Ornek // Tanımlandığı sınıf içerisinde bir metodu farklı bir metodda kullanmak istiyorsak ismiyle çağırmamız yeterli olacaktır.
+    ////{
+    ////    public void A()
+    ////    {
+    ////        B();
+    ////    }
+    ////    private void B()
+    ////    {
+    ////        C(5);
+    ////    }
+    ////    private int C(int a = 0)
+    ////    {
+    ////        return a;
+    ////    }
+
+
+    ////static void Main(string[] args)
+    ////{
+    ////  // 1. parametrenin değerini metodun içerisinde herhangi bir yerde çağırıp kullanabiliriz.
+    ////  // 2. metot içerisinde üretilen herhangi bir değeri tutacak değişken oluşturmaktansa parametre üzerinde bu değeri tutabiliriz. Yani parametrenin değerini değiştirebiliriz.
+    ////  //(Çünkü parametreler özünde bir değişkendir.)
+    ////  #region In Paremeters
+    ////  //In komutu sayesinde parametreye verilen değeri sabit tutabilmekteyiz.
+    ////  //In komutu, metodun paretmeresini readonly (Sadece okunabilir) hale getirir.
+    ////  //Index komutunun kullanıldığı parametrelerde eğer ki metot içerisinde farklı bir assing durumu söz konusu olursa derleyici hatası verecektir.
+    ////  #endregion 
+    ////}
+    ////static void X(in int a, int b, in char c)
+    ////{
+    ////  a = 123;
+    ////  b = 5;
+    ////  c = 'a';
+    ////}
+
+    ////static void Main(string[] args)
+    ////{
+    ////    X();
+    ////    #region Local Functions
+    ////    // Bir metot içerisinde tanımlanmış olan metotlardır!
+
+    ////    //C#'ta metotlar sade ve sadece class içerisinde tanımlananırlar diye söylemiştik! Halbuki OOP'de göreceğimiz struct, abstract class,interface , record yapılanmalarında da
+    ////    // metotlar tanımlanmaktadır. Metotlar bu saydıklarımızın dışında KESİNLİKLE başka bir yerde tanımlanamaz!!!!
+
+    ////    // Metotlar kesinlikle metotların içerisinde tanımlanamaz demiştik !!! Halbuki C# 7.0'da gelen local function özelliği sayesinde metot içerisinde metot tanımlanabişmektedir.
+    ////    #endregion
+    ////    #region Tanımlama Kuralları
+    ////    // 1. Erişim belirleyicisi(Access Modifeir) yazılamaz!
+    ////    // 2. Local function olarak tanımlanan fonksiyon adı tanımlandığı fonksiyonun adından farklı olmalıdır! Aksi taktirde derleyici hatası VERMEZ!!!
+    ////    #endregion
+    ////    #region Kullanım Kuralları
+    ////    //- Bir local function sade ve sadece tanımlandığı metodun içerisinde kullanılabilir..
+    ////    //- Local function tanımlandığı metodun içerisinden her yerden erişilebilir.
+    ////    #endregion
+    ////    #region Amacı
+    ////    //Locam function, sadece tek bir metotta tekrarlı bir şekilde kullanılacak bir algoritmayı/kod parçacığını/işlemi o metota özel bir şekilde tek seferlik tanımlamamızı vu kullanmamızı sağlar.
+    ////    #endregion
+    ////    #region Muadilleri
+    ////    //Anonim, Delegate, Func
+    ////    #endregion
+
+    ////}
+    ////public static void X()
+    ////{
+    ////    Y();
+    ////    void Y()
+    ////    {
+    ////        System.Console.WriteLine("Merhaba");
+    ////    }
+    ////    Y();
+
+    ////    return 0;
+
+    ////}
+    
+
 }
+
